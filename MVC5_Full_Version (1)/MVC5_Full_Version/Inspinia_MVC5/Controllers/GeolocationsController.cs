@@ -57,8 +57,7 @@ namespace Inspinia_MVC5.Controllers
 
             return View(geolocation);
         }
-        [AcceptVerbs("POST")]
-        [HttpPost]
+      
         // GET: /Geolocations/Edit/5
         public ActionResult Edit(int? id)
         {

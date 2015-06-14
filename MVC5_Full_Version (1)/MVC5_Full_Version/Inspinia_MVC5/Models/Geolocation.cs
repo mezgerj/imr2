@@ -21,6 +21,7 @@ namespace Inspinia_MVC5.Models
         public Int32? Parent_Geo_Id { get; set; }
         public System.Double? Range { get; set; }
         public int DownloadTime { get; set; }
+        public Int32? ContinentID { get; set; }
 
 
 
