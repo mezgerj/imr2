@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Inspinia_MVC5.Models.Content>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Index</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Content</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>List of Content</h5>
+					<div class="ibox-tools">
+						@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-xs"})
+					</div>
+                </div>
+                <div class="ibox-content">
+
+<table class="table table-striped">
+    <tr>
+         <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentType_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DownloadTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @Html.ActionLink(item.Title, "Details", new { id = item.Content_Id }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContentType.TypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DownloadTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+			@Html.ActionLink("Details", "Details", new { id=item.Content_Id }, new { @class = "btn btn-primary btn-sm"})
+            @Html.ActionLink("Edit", "Edit", new { id=item.Content_Id }, new { @class = "btn btn-white btn-sm"})
+            @Html.ActionLink("Delete", "Delete", new { id=item.Content_Id }, new { @class = "btn btn-white btn-sm"})
+        </td>
+    </tr>
+}
+
+</table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+

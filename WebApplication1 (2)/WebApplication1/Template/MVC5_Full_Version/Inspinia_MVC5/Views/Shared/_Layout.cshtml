@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>INSPINIA | @ViewBag.Title</title>
+    
+    <!--For the HTML editor, ckeditor-->
+    @Scripts.Render("~/Ckeditor/ckeditor.js")
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+        {@RenderSection("Styles", required: false)}
+     
+    <!-- Add jQuery Style direct - used for jQGrid plugin -->
+    <link href="@Url.Content("~/Scripts/plugins/jquery-ui/jquery-ui.css")" rel="stylesheet" type="text/css" />
+
+    <!--Google Maps Styling-->
+    @Styles.Render("~/GoogleMaps/css");
+
+    <!-- Primary Inspinia style -->     
+    @Styles.Render("~/font-awesome/css")                                                
+    @Styles.Render("~/Content/css")
+
+
+</head>
+<body>
+    <!-- Skin configuration box -->
+    <!--Html.Partial("_SkinConfig")-->
+
+    <!-- Wrapper-->
+    <!-- PageClass give you ability to specify custom style for specific view based on action -->
+    <div id="wrapper" class="@Html.PageClass()">
+
+        <!-- Navigation -->
+        @Html.Action("Navigation", "Shared")
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
+
+            <!-- Top Navbar -->
+            @Html.Partial("_TopNavbar")
+
+            <!-- Main view  -->
+            @RenderBody()
+
+            <!-- Footer -->
+            @Html.Partial("_Footer")
+
+        </div>
+        <!-- End page wrapper-->
+
+        <!-- Right Sidebar -->
+       @Html.Partial("_RightSidebar") 
+
+    </div>
+    <!-- End wrapper-->
+
+    <!-- Section for main scripts render -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/plugins/slimScroll")
+    @Scripts.Render("~/bundles/inspinia")
+
+    <!-- Skin config script - only for demo purpose-->
+    <!--Scripts.Render("~/bundles/skinConfig")-->
+
+    <!-- Handler for local scripts -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+<!-- Google Maps API JavaScript Stuff-->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        initialize();
+    });
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng('39.999165', '-83.015491'), //need to have (at)longitude && (at)latitude instead of hard coding
+            zoom: 17,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+        // create a marker  
+        var latlng = new google.maps.LatLng('39.999165', '-83.015491'); //need to have (at)longitude && (at)latitude instead of hard coding
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: 'Latitude: ' + latlng.Ya + ' Longitude :' + latlng.Za,
+            draggable: true
+        });
+        infoWindow = new google.maps.InfoWindow({
+            content: ""
+        });
+        infoWindow.open(map, marker);
+        geocoder = new google.maps.Geocoder();
+        //Update postal address when the marker is dragged  
+        google.maps.event.addListener(marker, 'click', function () { //dragend  
+            geocoder.geocode({ latLng: marker.getPosition() }, function (responses) {
+                if (responses && responses.length > 0) {
+                    infoWindow.setContent(
+                    "<div style=\"font-size:smaller;\">" + responses[0].formatted_address
+                    + "<br />"
+                    + "Latitude: " + marker.getPosition().lat() + "&nbsp"
+                    + "Longitude: " + marker.getPosition().lng() + "</div>"
+                    );
+                    infoWindow.open(map, marker);
+                } else {
+                    alert('Error: Google Maps could not determine the address of this location.');
+                }
+            });
+            map.panTo(marker.getPosition());
+        });
+        // Close the marker window when being dragged  
+        google.maps.event.addListener(marker, 'dragstart', function () {
+            infoWindow.close(map, marker);
+        });
+    }
+</script>
