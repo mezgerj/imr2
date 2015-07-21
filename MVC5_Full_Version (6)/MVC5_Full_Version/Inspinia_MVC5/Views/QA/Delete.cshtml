@@ -1,0 +1,121 @@
+﻿@model Inspinia_MVC5.Models.QA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Delete</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("List", "Index")
+            </li>
+            <li class="active">
+                <strong>Delete</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+			@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary"})
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>QA</h5>
+                </div>
+                <div class="ibox-content">
+				<h4 class="text-danger">Are you sure you want to delete this?</h4>
+				 <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Application_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Geo_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Geo_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DownloadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DownloadTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+        </div>
+    }
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+

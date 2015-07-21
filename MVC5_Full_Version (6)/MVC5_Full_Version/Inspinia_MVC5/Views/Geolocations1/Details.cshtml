@@ -1,0 +1,163 @@
+﻿@model Inspinia_MVC5.Models.Geolocation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Tables/DataTables.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Details</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("List", "Index")
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Details Geolocation</h5>
+                </div>
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Altitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Altitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Application_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parent_Geo_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parent_Geo_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Range)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Range)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DownloadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DownloadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContinentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContinentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateID)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.GeolocationID }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,582 @@
+﻿@model IEnumerable<Inspinia_MVC5.Models.Geolocation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Index</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Geolocation</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel blank-panel">
+            <div class="panel-heading">
+                <div class="panel-title m-b-md">
+                    <h4></h4>
+                </div>
+                <div class="panel-options">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1">Datasheet</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-2">Accordian</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-3">Nestable</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Editable Table in- combination with jEditable</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li>
+                                            <a href="#">Config option 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Config option 2</a>
+                                        </li>
+                                    </ul>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="">
+                                    <a onclick="fnClickAddRow();" href="javascript:void(0);" class="btn btn-primary ">Add a new row</a>
+                                </div>
+                                <table class="table table-striped table-bordered table-hover dataTables-example" id="editable">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Latitude)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Longitude)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Altitude)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Description)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Application_Id)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Parent_Geo_Id)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Range)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.DownloadTime)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ContinentID)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CountryID)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.StateID)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CityID)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="Geolocation">
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Latitude)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Longitude)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Altitude)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Application_Id)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Parent_Geo_Id)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.Range)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.DownloadTime)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.ContinentID)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.CountryID)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.StateID)
+                                                </td>
+                                                <td class="td-editable">
+                                                    @Html.DisplayFor(modelItem => item.CityID)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Collaps panels</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <i class="fa fa-wrench"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-user">
+                                            <li>
+                                                <a href="#">Config option 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Config option 2</a>
+                                            </li>
+                                        </ul>
+                                        <a class="close-link">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="panel-body">
+                                        <div class="panel-group" id="accordion">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h5 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">North America</a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse in">
+                                                    <div class="panel-body">
+                                                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                if (@Equals(item.ContinentID, 1))
+                                                                {
+                                                                    <tr class="Geolocation">
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Name)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Latitude)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Longitude)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Altitude)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Description)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Application_Id)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Parent_Geo_Id)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Range)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.DownloadTime)
+                                                                        </td>
+                                                                        <td>
+                                                                            @Html.ActionLink("Details", "Details", new { id = item.GeolocationID }, new { @class = "btn btn-primary btn-sm" })
+                                                                            @Html.ActionLink("Edit", "Edit", new { id = item.GeolocationID }, new { @class = "btn btn-white btn-sm" })
+                                                                            @Html.ActionLink("Delete", "Delete", new { id = item.GeolocationID }, new { @class = "btn btn-white btn-sm" })
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">South America</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Africa</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Europe</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseFour" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Asia</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Australia</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Antartica</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-3" class="tab-pane">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <div class="ibox-content">
+                                        <div class="dd" id="nestable2">
+                                            <ol class="dd-list">
+                                                <li class="dd-item" data-id="1">
+                                                    <div class="dd-handle">
+
+
+                                                        <span class="label label-info"><i class="fa fa-users"></i></span> North America
+                                                    </div>
+                                                    <ol class="dd-list">
+
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            if (item.CountryID == 1)
+                                                            {
+
+
+
+
+
+
+
+
+
+                                                                <li class="dd-item" data-id="@item.GeolocationID">
+                                                                    <div class="dd-handle">
+                                                                        <span class="label label-info"><span class="pull-right"></span><i class="fa fa-users"></i></span>@item.Name
+
+                                                                    </div>
+                                                                </li>
+
+
+
+
+                                                            }
+
+
+
+
+                                                        }
+
+                                                    </ol>
+                                                </li>
+
+                                                <li class="dd-item" data-id="2">
+                                                    <div class="dd-handle">
+
+
+                                                        <span class="label label-info"><i class="fa fa-users"></i></span> South America
+                                                    </div>
+                                                    <ol class="dd-list">
+
+                                                        @foreach (var item in Model)
+                                                        {
+
+                                                            if (item.ContinentID == 2)
+                                                            {
+
+
+
+                                                                <li class="dd-item" data-id="@item.GeolocationID">
+                                                                    <div class="dd-handle">
+                                                                        <span class="label label-info"><span class="pull-right"></span><i class="fa fa-users"></i></span>@item.Name
+
+                                                                    </div>
+                                                                </li>
+
+                                                            }
+
+                                                        }
+                                                    </ol>
+                                                </li>
+
+                                            </ol>
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="dd" id="nestable1">
+                                        <ol class="dd-list">
+                                            <li class="dd-item" data-id="1">
+
+
+                                                <div class="dd-handle">
+                                                    <span class="label label-info"><i class="fa fa-users"></i></span> Cras ornare tristique.
+                                                </div>
+                                                <ol class="dd-list">
+                                                    <li class="dd-item" data-id="2">
+                                                        <div class="dd-handle">
+                                                            <span class="pull-right"> 12:00 pm </span>
+                                                            <span class="label label-info"><i class="fa fa-cog"></i></span> Vivamus vestibulum nulla nec ante.
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="3">
+                                                        <div class="dd-handle">
+                                                            <span class="pull-right"> 11:00 pm </span>
+                                                            <span class="label label-info"><i class="fa fa-bolt"></i></span> Nunc dignissim risus id metus.
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="4">
+                                                        <div class="dd-handle">
+                                                            <span class="pull-right"> 11:00 pm </span>
+                                                            <span class="label label-info"><i class="fa fa-laptop"></i></span> Vestibulum commodo
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+
+                                            <li class="dd-item" data-id="5">
+                                                <div class="dd-handle">
+                                                    <span class="label label-warning"><i class="fa fa-users"></i></span> Integer vitae libero.
+                                                </div>
+                                                <ol class="dd-list">
+                                                    <li class="dd-item" data-id="6">
+                                                        <div class="dd-handle">
+                                                            <span class="pull-right"> 15:00 pm </span>
+                                                            <span class="label label-warning"><i class="fa fa-users"></i></span> Nam convallis pellentesque nisl.
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="7">
+                                                        <div class="dd-handle">
+                                                            <span class="pull-right"> 16:00 pm </span>
+                                                            <span class="label label-warning"><i class="fa fa-bomb"></i></span> Vivamus molestie gravida turpis
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="8">
+                                                        <div class="dd-handle">
+                                                            <span class="pull-right"> 21:00 pm </span>
+                                                            <span class="label label-warning"><i class="fa fa-child"></i></span> Ut aliquam sollicitudin leo.
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="m-t-md">
+                                        <h5>Serialised Output</h5>
+                                    </div>
+                                    <textarea id="nestable2-output" class="form-control"></textarea>
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/jeditable")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/nestable")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.dataTables-example').dataTable({
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "../scripts/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                }
+            });
+
+            /* Init DataTables */
+            var oTable = $('#editable').dataTable();
+
+            /* Apply the jEditable handlers to the table */
+
+            oTable.$('.td').editable('http://localhost:58893/Helpers/Update.php', {
+                "callback": function (sValue, y) {
+                    var aPos = oTable.fnGetPosition(this);
+                    oTable.fnUpdate(sValue, aPos[0], aPos[1]);
+                },
+                "submitdata": function (value, settings) {
+                    return {
+                        "row_id": this.parentNode.getAttribute('id'),
+
+                        "column": oTable.fnGetPosition(this)[2]
+
+                    };
+                },
+
+                "width": "90%",
+                "height": "100%"
+            });
+
+
+        });
+
+        function fnClickAddRow() {
+            $('#editable').dataTable().fnAddData([
+                "Custom row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+            "New Row",
+            "New Row",
+            "New Row",
+            "New Row",
+            "New Row", ]);
+
+        }
+
+
+
+        var updateOutput = function (e) {
+            var list = e.length ? e : $(e.target),
+                    output = list.data('output');
+            if (window.JSON) {
+                output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+                var obj = JSON.parse(JSON.stringify(list.nestable('serialize')));
+                console.log(obj[0].children[0].id);
+            } else {
+                output.val('JSON browser support required for this demo.');
+            }
+        };
+        // activate Nestable for list 1
+        $('#nestable1').nestable({
+            group: 1
+        }).on('change', updateOutput);
+
+        // activate Nestable for list 2
+        $('#nestable2').nestable({
+            group: 1
+        }).on('change', updateOutput);
+
+        // output initial serialised data
+        //updateOutput($('#nestable1').data('output', $('#nestable1-output')));
+        updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+        $('#nestable-menu').on('click', function (e) {
+            var target = $(e.target),
+                    action = target.data('action');
+            if (action === 'expand-all') {
+                $('.dd').nestable('expandAll');
+            }
+            if (action === 'collapse-all') {
+                $('.dd').nestable('collapseAll');
+            }
+        });
+
+
+
+
+
+    </script>
+}
+
+

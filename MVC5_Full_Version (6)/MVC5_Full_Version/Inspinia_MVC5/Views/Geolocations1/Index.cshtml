@@ -1,0 +1,228 @@
+﻿@model IEnumerable<Inspinia_MVC5.Models.Geolocation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.AntiForgeryToken();
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Index</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Geolocation</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Geolocations</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    
+                    <table class="table table-striped table-bordered table-hover dataTables-example" id="editable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Latitude)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Longitude)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Altitude)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Application_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Parent_Geo_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Range)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DownloadTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ContinentID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CountryID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StateID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CityID)
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="@item.GeolocationID" value="@item.GeolocationID">
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Latitude)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Longitude)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Altitude)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Application_Id)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Parent_Geo_Id)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.Range)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.DownloadTime)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.ContinentID)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.CityID)
+                                    </td>
+                                    <td id="@item.GeolocationID" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.CountryID)
+                                    </td>
+                                    <td id="@(item.StateID)" value="@item.GeolocationID">
+                                        @Html.DisplayFor(modelItem => item.StateID)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/plugins/jeditable")
+    @Scripts.Render("~/plugins/dataTables")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           
+
+            $('.dataTables-example').dataTable({
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "../scripts/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                }
+            });
+          
+            /* Init DataTables */
+            var oTable = $('#editable').dataTable();
+          
+            /* Apply the jEditable handlers to the table */
+            oTable.$('td').editable('/Geolocations1/EditField',
+               {
+               
+                   tooltip: "Click to edit....",
+                   indicator: "Saving...",
+                   submit : "Save",
+                   cancel : "Cancel",
+                 
+                   
+               },
+
+                {
+                    "callback": function (sValue, y) {
+                        var aPos = oTable.fnGetPosition(this);
+                        oTable.fnUpdate(sValue, aPos[0], aPos[1]);
+                    },
+        
+                    "submitdata": {
+
+                        GeolocationId: function () {
+
+                            return this.attr("id");
+                        },
+                        RecordType: "Geolocation"
+                    },
+
+                "width": "90%",
+                "height": "100%"
+            });
+            
+
+        });
+        
+        function fnClickAddRow() {
+            $('#editable').dataTable().fnAddData([
+                "Custom row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row",
+                "New row"]);
+
+        }
+
+    </script>
+}
+
+
+

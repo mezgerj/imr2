@@ -1,0 +1,330 @@
+﻿@model Inspinia_MVC5.Models.Event
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Create</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Timeline", "Index")
+            </li>
+            <li class="active">
+                <strong>Create</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            @Html.ActionLink("Back to Timeline", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Create Event</h5>
+                </div>
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Title)
+                                    @Html.ValidationMessageFor(model => model.Title)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="ibox float-e-margins">
+
+                                                <div class="ibox-content no-padding">
+
+                                                    <form>
+                                                        <textarea class="summernote" name="Description">
+                                                           
+
+                                                        </textarea>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+                                    <div class="input-group">
+                                        <select data-placeholder="Choose an event type..." data-val-required="The Category field is required." data-val="true" class="chosen-select" value=1 id="Category" style="width:350px;" name="Category" type="number" tabindex="2">
+                                            <option value="1">Music</option>
+                                            <option value="2">Social</option>
+                                            <option value="3">Civic</option>
+                                            <option value="4">Meeting</option>
+                                            <option value="5">Celebration</option>
+                                            <option value="6">Games</option>
+                                        </select>
+
+                                        @Html.ValidationMessageFor(model => model.Category)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Application_Id, "Application", new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <select data-placeholder="Choose an event type..." data-val-required="The Category field is required." data-val="true" class="chosen-select" id="Application_Id" style="width:350px;" name="Application_Id" type="number" tabindex="2">
+                                            <option value="1023">FindBrutus</option>
+                                            <option value="1024">TheatreQA</option>
+                                            <option value="1025">Outlook</option>
+                                            <option value="1026">AR Health</option>
+                                            <option value="1027">Teacher's Aid</option>
+                                            <option value="1028">BackBook</option>
+                                            <option value="1029">AR Health 2</option>
+                                        </select>
+
+                                        @Html.ValidationMessageFor(model => model.Category)
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Application_Id)
+                            </div>
+
+                            <div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Start_Date, "Start Date", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Start_Date)
+                                        @Html.ValidationMessageFor(model => model.Start_Date)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.End_Date, "End Date", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.End_Date)
+                                        @Html.ValidationMessageFor(model => model.End_Date)
+                                    </div>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="form-group" id="data_1">
+                                @Html.LabelFor(model => model.Start_Date, "Start Date", new { @class = "control-label col-md-2" })
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" id="startDate" value="">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" id="data_1">
+                                @Html.LabelFor(model => model.End_Date, "End Date", new { @class = "control-label col-md-2" })
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" id="endDate" value="">
+                                </div>
+
+                            </div>
+                            <div class="input-group clockpicker" data-autoclose="true">
+                                <input type="text" class="form-control" value="09:30">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
+                            -->
+                            <div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Latitude, "Latitude", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Latitude)
+                                        @Html.ValidationMessageFor(model => model.Latitude)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Longitude, "Longitude", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Longitude)
+                                        @Html.ValidationMessageFor(model => model.Longitude)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="address" id="address-label">Address</label>
+                                <div class="col-md-10">
+                                    <input class="text-box single-line" id="address" name="address" type="text" value="" />
+                                    <br />
+                                    <input type="button" value="Save Address" onclick="codeAddress()" class="btn btn-primary" />
+                                </div>
+                            </div>
+                            <div id="map-canvas"></div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-white" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/summernoteStyles")
+    @Styles.Render("~/plugins/datapickerStyles")
+    <link href="/Content/plugins/clockpicker/clockpicker.css" rel="stylesheet" />
+
+
+
+    <style>
+        #map-canvas {
+            min-height: 500px;
+            padding-bottom: 50px;
+        }
+    </style>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/plugins/summernote")
+    @Scripts.Render("~/plugins/googleMaps")
+    @Scripts.Render("~/plugins/datapicker")
+    @Scripts.Render("~/plugins/clockpicker")
+    <link href="/Scripts/plugins/clockpicker/clockpicker.js" rel="stylesheet" />
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        console.log('Here');
+        $('.summernote').summernote({
+
+        });
+
+        
+
+    });
+
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+
+        //$('.clockpicker').clockpicker();
+
+
+    var edit = function () {
+        $('.click2edit').summernote({ focus: true });
+    };
+
+    var save = function () {
+        var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+        $('.click2edit').destroy();
+    };
+
+    var geocoder;
+    var map;
+    var marker = null;
+    var lat = document.getElementById("Latitude").value;
+    var long = document.getElementById("Longitude").value;
+    var inputForAddress = lat + ',' + long;
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(lat, long);
+        var mapOptions = {
+            zoom: 2,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: latlng
+
+        }
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    }
+
+    function codeAddress() {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                map.setZoom(15);
+                if (marker === null) {
+                    marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location,
+                        draggable: true
+                    });
+                    google.maps.event.addListener(marker, "dragend", function () {
+                        document.getElementById('Latitude').value = marker.getPosition().lat();
+                        document.getElementById('Longitude').value = marker.getPosition().lng();
+                    });
+                } else {
+                    marker.setPosition(results[0].geometry.location);
+                }
+                document.getElementById('Latitude').value = marker.getPosition().lat();
+                document.getElementById('Longitude').value = marker.getPosition().lng();
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    function codeLatLng() {
+        var input = inputForAddress;
+        var latlngStr = input.split(',', 2);
+        var latlng = new google.maps.LatLng(latlngStr[0], latlngStr[1]);
+        geocoder.geocode({ 'location': latlng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    map.setZoom(11);
+                    marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map
+                    });
+                    var address = results[1].formatted_address;
+                    document.getElementById("address").value = address;
+                } else {
+                    window.alert('No results found');
+                }
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+}

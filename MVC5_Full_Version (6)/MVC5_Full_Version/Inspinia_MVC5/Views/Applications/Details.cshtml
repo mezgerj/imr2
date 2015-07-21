@@ -1,0 +1,173 @@
+﻿@model Inspinia_MVC5.Models.Application
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Details</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("List", "Index")
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Details Application</h5>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        @using (Html.BeginForm("AssignUser", "Applications", FormMethod.Post)){
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            @ViewBag.assignError
+
+                            <div class="editor-field">
+                                @Html.DropDownList("Supporter_Id", String.Empty)
+                                <input class="btn" type="submit" value="Assign User" />
+                            </div>
+                            @Html.Hidden("Application_Id", Model.Application_Id)
+                            @Html.Hidden("Application", Model) 
+                               
+                        }
+                    </div>
+
+                    <div>
+                        @using (Html.BeginForm("RemoveUser", "Applications", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <div class="editor-field">
+                                @Html.DropDownList("Supporter_Id", String.Empty)
+                                <input class="btn" type="submit" value="Remove User" />
+                            </div>
+                            @Html.Hidden("Application_Id", Model.Application_Id)
+                            @Html.Hidden("Application", Model)
+                            @ViewBag.removeError
+
+                        }
+                    </div>
+
+                    <form class="form-horizontal">
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs padding-16">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#edit-basic">
+                                        <i class="green icon-info bigger-125"></i>
+                                        Basic Info
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a data-toggle="tab" href="#edit-settings">
+                                        <i class="purple icon-user bigger-125"></i>
+                                        User
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content profile-edit-tab-content">
+                                <div id="edit-basic" class="tab-pane in active">
+                                    <div class="space-10"></div>
+
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Name)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Description)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Company_Id)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Company.Name)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.ApplicationToken)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.ApplicationToken)
+                                        </dd>
+
+                                    </dl>
+
+                                </div>
+
+
+                                <!--User tab -->
+                                <div id="edit-settings" class="tab-pane">
+                                    <div class="space-10"></div>
+
+                                    <h4 class="header blue bolder smaller center">List of User</h4>
+
+
+                                    <div class="row">
+
+                                        <ol class="left">
+                                            @foreach (var supporter in Model.findSupporters())
+                                            {
+                                                <li>@supporter.FirstName @supporter.LastName</li>
+
+                                            }
+                                        </ol>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    
+
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.Application_Id }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
